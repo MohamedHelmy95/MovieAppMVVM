@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_toprated">
+
+    <fragment
+        android:id="@+id/nav_toprated"
+        android:name="com.example.mymvdb.ui.ui.toprated.TopRatedFragment"
+        android:label="@string/title_topRated"
+        tools:layout="@layout/fragment_toprated" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_popular"
+        android:name="com.example.mymvdb.ui.ui.popular.PopularFragment"
+        android:label="@string/title_popular"
+        tools:layout="@layout/fragment_popular" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_upcoming"
+        android:name="com.example.mymvdb.ui.ui.upcoming.UpComingFragment"
+        android:label="@string/title_upComing"
+        tools:layout="@layout/fragment_upcoming" />
+</navigation>
