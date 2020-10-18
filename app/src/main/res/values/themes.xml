@@ -19,7 +19,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/mainFont</item>
+
+    </style>
+
+    
+
     <style name="Theme.MyMVDB.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MyMVDB.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextView">1</style>
 </resources>

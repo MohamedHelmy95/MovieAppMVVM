@@ -2,6 +2,7 @@ package com.example.mymvdb.ui.ui.singlemovie
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.content_scrolling.*
+import kotlinx.android.synthetic.main.movie_detail.*
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,17 +52,23 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun bindUI(it: MovieDetails?) {
         toolbar_layout.isTitleEnabled=true
         toolbar_layout.title=it?.original_title
-        taglineValueTv.text=it?.tagline
+        Log.d("Data",it?.original_title)
+        taglineValueTv?.text=it?.tagline
+        Log.d("Data",it?.tagline)
         overviewValueTv.text=it?.overview
+        Log.d("Data",it?.overview)
         var genrs:String  =genresValueTv.text.toString()
         while (it?.genres?.iterator()?.hasNext()!!){
             genrs+=it.genres.iterator().next().toString()
         }
+        genresValueTv.text=genrs
+        Log.d("Data",genrs)
         statusValueTv.text=it.status
+
         rBar.rating= it.vote_average.toFloat()
         val formatCurrency=NumberFormat.getCurrencyInstance(Locale.US)
         budgetValueTv.text=formatCurrency.format(it.budget)
-
+        revenueValueTv.text=formatCurrency.format(it.revenue)
         val simpleDateFormat = SimpleDateFormat("mmm-dd-yyyy")
 
         releaseDateValueTv.text=simpleDateFormat.format(it.release_date)
