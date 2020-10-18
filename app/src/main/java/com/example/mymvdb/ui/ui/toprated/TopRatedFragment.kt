@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.example.mymvdb.R
-import com.example.mymvdb.ui.ui.MovieDetailActivity
+import com.example.mymvdb.ui.ui.singlemovie.MovieDetailActivity
 
 class TopRatedFragment : Fragment() {
 
@@ -26,7 +24,7 @@ class TopRatedFragment : Fragment() {
                 ViewModelProvider(this).get(TopRatedViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_toprated, container, false)
         val btn: Button = root.findViewById(R.id.btn)
-        topRatedViewModel.text.observe(viewLifecycleOwner, Observer {
+        topRatedViewModel.text.observe(viewLifecycleOwner, {
             btn.setOnClickListener {
                 val intent = Intent(it.context, MovieDetailActivity::class.java)
                 intent.putExtra("id",299534)

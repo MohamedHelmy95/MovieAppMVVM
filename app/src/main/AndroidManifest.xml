@@ -10,9 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyMVDB">
+        android:theme="@style/Theme.MyMVDB"
+        android:allowBackup="false">
         <activity
-            android:name=".ui.ui.MovieDetailActivity"
+            android:name=".ui.ui.singlemovie.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/Theme.MyMVDB.NoActionBar" />
         <activity

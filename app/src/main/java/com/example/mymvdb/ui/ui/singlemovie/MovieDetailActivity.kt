@@ -1,9 +1,8 @@
-package com.example.mymvdb.ui.ui
+package com.example.mymvdb.ui.ui.singlemovie
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -13,7 +12,6 @@ import com.example.mymvdb.api.TMDBClient
 import com.example.mymvdb.api.TMDBInterface
 import com.example.mymvdb.movieDetail.MovieDetails
 import com.example.mymvdb.reposit.MovieDetailsRepository
-import com.example.mymvdb.reposit.SingleMovieViewModel
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -43,7 +41,7 @@ class MovieDetailActivity : AppCompatActivity() {
         val apiService:TMDBInterface=TMDBClient.getClient()
         movieDetailsRepository= MovieDetailsRepository(apiService)
         viewModel=getViewModel(movieId)
-        viewModel.movieDetails.observe(this, Observer {
+        viewModel.movieDetails.observe(this, {
             bindUI(it)
         })
 
@@ -67,7 +65,7 @@ class MovieDetailActivity : AppCompatActivity() {
         val simpleDateFormat = SimpleDateFormat("mmm-dd-yyyy")
 
         releaseDateValueTv.text=simpleDateFormat.format(it.release_date)
-        runtimeValueTv.text=it.runtime.toString() + "Minutes"
+        runtimeValueTv.text= "${it.runtime}${this.getString(R.string.minutes)}"
         original_languageValueTv.text=it.original_language
         var pcomps:String  =production_companiesValueTv.text.toString()
         while (it.production_companies.iterator().hasNext()){
@@ -83,7 +81,7 @@ class MovieDetailActivity : AppCompatActivity() {
         Glide.with(this).load(posterPathUrl).into(posterImage)
     }
 
-    private fun getViewModel(movieId: Int):SingleMovieViewModel{
+    private fun getViewModel(movieId: Int): SingleMovieViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
