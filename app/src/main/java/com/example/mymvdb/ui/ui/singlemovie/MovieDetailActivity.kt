@@ -11,29 +11,30 @@ import com.example.mymvdb.R
 import com.example.mymvdb.api.POSTER_BASE_URL
 import com.example.mymvdb.api.TMDBClient
 import com.example.mymvdb.api.TMDBInterface
+import com.example.mymvdb.databinding.ActivityMovieDetailBinding
+import com.example.mymvdb.movieDetail.Genre
 import com.example.mymvdb.movieDetail.MovieDetails
+import com.example.mymvdb.movieDetail.ProductionCompany
+import com.example.mymvdb.movieDetail.ProductionCountry
 import com.example.mymvdb.reposit.MovieDetailsRepository
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.movie_detail.*
 import java.text.NumberFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
 
-
+    private lateinit var binding :ActivityMovieDetailBinding
     private lateinit var viewModel: SingleMovieViewModel
     private lateinit var movieDetailsRepository: MovieDetailsRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_detail)
-        setSupportActionBar(findViewById(R.id.toolbar))
-        findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
+        binding= ActivityMovieDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        Log.e( "ErrorHH",binding.root.toString())
+        setSupportActionBar(binding.toolbar)
+       //binding.root.findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
+        binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
@@ -50,44 +51,55 @@ class MovieDetailActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat")
     private fun bindUI(it: MovieDetails?) {
-        toolbar_layout.isTitleEnabled=true
-        toolbar_layout.title=it?.original_title
+
+       binding.toolbarLayout.isTitleEnabled=true
+        binding.toolbarLayout.title=it?.original_title
         Log.d("Data",it?.original_title)
-        taglineValueTv?.text=it?.tagline
-        Log.d("Data",it?.tagline)
-        overviewValueTv.text=it?.overview
-        Log.d("Data",it?.overview)
-        var genrs:String  =genresValueTv.text.toString()
-        while (it?.genres?.iterator()?.hasNext()!!){
-            genrs+=it.genres.iterator().next().toString()
-        }
-        genresValueTv.text=genrs
-        Log.d("Data",genrs)
-        statusValueTv.text=it.status
+       binding.included.apply {
 
-        rBar.rating= it.vote_average.toFloat()
-        val formatCurrency=NumberFormat.getCurrencyInstance(Locale.US)
-        budgetValueTv.text=formatCurrency.format(it.budget)
-        revenueValueTv.text=formatCurrency.format(it.revenue)
-        val simpleDateFormat = SimpleDateFormat("mmm-dd-yyyy")
+           taglineValueTv.text=it?.tagline
+           Log.d("Data",it?.tagline)
+           overviewValueTv.text=it?.overview
+           Log.d("Data",it?.overview)
 
-        releaseDateValueTv.text=simpleDateFormat.format(it.release_date)
-        runtimeValueTv.text= "${it.runtime}${this.getString(R.string.minutes)}"
-        original_languageValueTv.text=it.original_language
-        var pcomps:String  =production_companiesValueTv.text.toString()
-        while (it.production_companies.iterator().hasNext()){
-            pcomps+=it.production_companies.iterator().next().name
-        }
-        production_companiesValueTv.text=pcomps
-        var pcontrs:String  =production_countriesValueTv.text.toString()
-        while (it.production_countries.iterator().hasNext()){
-            pcontrs+=it.production_countries.iterator().next().name
-        }
-        production_countriesValueTv.text=pcontrs
-        val posterPathUrl :String= POSTER_BASE_URL+it.poster_path
-        Glide.with(this).load(posterPathUrl).into(posterImage)
+           genresValueTv.text=getGenres(it?.genres)
+           Log.d("Data",genresValueTv.text.toString())
+           statusValueTv.text=it?.status
+
+           rBar.rating= it?.vote_average?.toFloat() ?: Float.MAX_VALUE
+           val formatCurrency=NumberFormat.getCurrencyInstance(Locale.US)
+           budgetValueTv.text=formatCurrency.format(it?.budget)
+           revenueValueTv.text=formatCurrency.format(it?.revenue)
+           releaseDateValueTv.text=it?.release_date
+           runtimeValueTv.text= "${it?.runtime} ${this.root.context.getString(R.string.minutes)}"
+           originalLanguageValueTv.text= it?.original_language
+
+           productionCompaniesValueTv.text=getProductionCompanies(it?.production_companies)
+           productionCountriesValueTv.text=getProductionCountries(it?.production_countries)
+       }
+        val posterPathUrl :String= POSTER_BASE_URL+ it?.poster_path
+        Glide.with(this).load(posterPathUrl).into(binding.posterImage)
     }
-
+fun   getProductionCompanies(list: List<ProductionCompany>?):String{
+ var out:String=""
+    for (d in list!!){
+      out+= "${d.name} , "
+  }
+    return out
+}
+    fun   getProductionCountries(list: List<ProductionCountry>?):String{
+        var out:String=""
+        for (d in list!!){
+            out+= "${d.name} , "
+        }
+        return out
+    }fun   getGenres(list: List<Genre>?):String{
+        var out:String=""
+        for (d in list!!){
+            out+= "${d.name} , "
+        }
+        return out
+    }
     private fun getViewModel(movieId: Int): SingleMovieViewModel {
         return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {

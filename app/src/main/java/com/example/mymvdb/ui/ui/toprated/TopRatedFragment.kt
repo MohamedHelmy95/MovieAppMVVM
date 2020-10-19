@@ -27,7 +27,7 @@ class TopRatedFragment : Fragment() {
         topRatedViewModel.text.observe(viewLifecycleOwner, {
             btn.setOnClickListener {
                 val intent = Intent(it.context, MovieDetailActivity::class.java)
-                intent.putExtra("id",299534)
+                intent.putExtra("id",337401)
                 startActivity(intent)
             }
 

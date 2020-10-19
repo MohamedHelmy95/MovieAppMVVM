@@ -36,7 +36,7 @@ android {
 
         dataBinding = true
 
-        // for view binding:
+     // for view binding:
 //         viewBinding = true
     }
 }
