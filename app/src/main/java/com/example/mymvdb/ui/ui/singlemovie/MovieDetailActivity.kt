@@ -16,7 +16,6 @@ import com.example.mymvdb.movieDetail.Genre
 import com.example.mymvdb.movieDetail.MovieDetails
 import com.example.mymvdb.movieDetail.ProductionCompany
 import com.example.mymvdb.movieDetail.ProductionCountry
-import com.example.mymvdb.reposit.MovieDetailsRepository
 import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
 import java.util.*
@@ -34,6 +33,7 @@ class MovieDetailActivity : AppCompatActivity() {
         Log.e( "ErrorHH",binding.root.toString())
         setSupportActionBar(binding.toolbar)
        //binding.root.findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
+
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
@@ -65,8 +65,8 @@ class MovieDetailActivity : AppCompatActivity() {
            genresValueTv.text=getGenres(it?.genres)
            Log.d("Data",genresValueTv.text.toString())
            statusValueTv.text=it?.status
-
-           rBar.rating= it?.vote_average?.toFloat() ?: Float.MAX_VALUE
+            voteAverageValueTv.text= "${it?.vote_average.toString()} /10"
+             rBar.rating= it?.vote_average?.toFloat()!!.div(2)
            val formatCurrency=NumberFormat.getCurrencyInstance(Locale.US)
            budgetValueTv.text=formatCurrency.format(it?.budget)
            revenueValueTv.text=formatCurrency.format(it?.revenue)
@@ -83,21 +83,25 @@ class MovieDetailActivity : AppCompatActivity() {
 fun   getProductionCompanies(list: List<ProductionCompany>?):String{
  var out:String=""
     for (d in list!!){
-      out+= "${d.name} , "
-  }
+            out+= "${d.name} , "
+        }
+  out=  out.removeSuffix(" , ")
     return out
 }
     fun   getProductionCountries(list: List<ProductionCountry>?):String{
         var out:String=""
         for (d in list!!){
             out+= "${d.name} , "
+
         }
+      out=  out.removeSuffix(" , ")
         return out
     }fun   getGenres(list: List<Genre>?):String{
         var out:String=""
         for (d in list!!){
-            out+= "${d.name} , "
-        }
+                out+= "${d.name} , "
+         }
+       out= out.removeSuffix(" , ")
         return out
     }
     private fun getViewModel(movieId: Int): SingleMovieViewModel {

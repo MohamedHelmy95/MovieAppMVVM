@@ -10,4 +10,5 @@
     <color name="divider">#40BEBEBE</color>
     <color name="second">#7c7c7c</color>
     <color name="colorAccent">#30475E</color>
+    <color name="colorPrimary">#009688</color>
 </resources>

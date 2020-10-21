@@ -3,7 +3,6 @@ package com.example.mymvdb.ui.ui.singlemovie
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.mymvdb.movieDetail.MovieDetails
-import com.example.mymvdb.reposit.MovieDetailsRepository
 import com.example.mymvdb.utility.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 

@@ -1,13 +1,27 @@
 package com.example.mymvdb.ui.ui.popular
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
+import com.example.mymvdb.movieDetail.Movie
+import com.example.mymvdb.utility.NetworkState
+import io.reactivex.disposables.CompositeDisposable
 
-class PopularViewModel : ViewModel() {
+public class PopularViewModel(private  val moviePageListRepository: MoviePageListRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val compositeDisposable = CompositeDisposable()
+    val moviePagedList: LiveData<PagedList<Movie>> by lazy {
+        moviePageListRepository.fetchLiveMoviePageList(compositeDisposable)
     }
-    val text: LiveData<String> = _text
+    val networkState: LiveData<NetworkState> by lazy {
+        moviePageListRepository.getNetworkState()
+    }
+    fun listIsEmpty():Boolean{
+        return moviePagedList.value?.isEmpty() ?: true
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
+    }
 }

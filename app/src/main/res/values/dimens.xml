@@ -6,5 +6,8 @@
     <dimen name="branchMapH">175dp</dimen>
     <dimen name="md_keylinesV">7dp</dimen>
     <dimen name="mainFont">14sp</dimen>
+    <dimen name="secondFont">12sp</dimen>
+    <dimen name="thirdFont">10sp</dimen>
+    <dimen name="fourthFont">8sp</dimen>
     <dimen name="lagrgeText">80dp</dimen>
 </resources>

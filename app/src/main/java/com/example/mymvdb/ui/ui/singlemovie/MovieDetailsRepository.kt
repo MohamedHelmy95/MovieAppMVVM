@@ -1,4 +1,4 @@
-package com.example.mymvdb.reposit
+package com.example.mymvdb.ui.ui.singlemovie
 
 import androidx.lifecycle.LiveData
 import com.example.mymvdb.api.TMDBInterface

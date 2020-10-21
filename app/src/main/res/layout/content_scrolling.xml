@@ -83,48 +83,60 @@
                     android:layout_marginTop="@dimen/md_keylinesV"
                     android:layout_marginBottom="@dimen/md_keylinesV"
                     android:background="@color/divider" />
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+                    >
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/voteAverageTv"
-                        android:layout_width="0dp"
-                        android:layout_weight=".25"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
                         android:layout_gravity="center_vertical"
                         android:text="@string/vote_average"
                         android:textColor="@color/colorAccent"
                         android:textAppearance="@style/TextStyle"
-                        android:textStyle="bold" />
-                    <!--<RatingBar
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/voteAverageValueTv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_margin="1dp"
+                        />
+                    <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/voteAverageValueTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/vote_average"
+                    android:textColor="@color/colorAccent"
+                    android:textAppearance="@style/TextStyle"
+                    android:textStyle="bold"
+                        android:layout_margin="1dp"
+                        app:layout_constraintEnd_toStartOf="@id/rBar"
+                        app:layout_constraintStart_toEndOf="@id/voteAverageTv"
+                        />
+                    <com.willy.ratingbar.BaseRatingBar
                         android:id="@+id/rBar"
-                        android:theme="@style/myRatingBarSmall"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-
-                        android:layout_weight=".75"
-                        />-->
-                    <com.willy.ratingbar.ScaleRatingBar
-                        android:id="@+id/rBar"
-                        android:layout_width="0dp"
-                        android:layout_weight=".75"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srb_numStars="4"
-                        app:srb_starWidth="10dp"
-                        app:srb_starPadding="2dp"
-                        app:srb_starHeight="10dp"
-                        app:srb_stepSize="0.1"
                         app:srb_isIndicator="true"
-                        app:srb_clickable="false"
-                        app:srb_scrollable="false"
-                        app:srb_clearRatingEnabled="false"
+                        app:srb_starHeight="15dp"
+                        app:srb_starWidth="15dp"
+                        app:srb_starPadding="1dp"
+                        android:padding="5dp"
+                        app:srb_numStars="5"
+                        app:srb_stepSize=".1"
+                       app:srb_scrollable="false"
+                        app:srb_clearRatingEnabled="true"
+                        app:srb_drawableEmpty="@drawable/empty"
+                        app:srb_drawableFilled="@drawable/filled"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/voteAverageValueTv"
                         />
 
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <View
                     android:id="@+id/voteAverage_divider"
                     android:layout_width="match_parent"
@@ -416,8 +428,9 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/overviewValueTv"
             android:layout_width="0dp"
-            android:layout_height="@dimen/branchMapH"
+            android:layout_height="wrap_content"
             android:padding="@dimen/md_keylinesV"
+            android:maxLines="10"
             android:textAlignment="viewStart"
             android:textColor="@color/second"
             android:text="@string/overview"
