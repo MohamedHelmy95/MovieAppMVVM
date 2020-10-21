@@ -7,7 +7,7 @@ import com.example.mymvdb.movieDetail.Movie
 import com.example.mymvdb.utility.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
-public class PopularViewModel(private  val moviePageListRepository: MoviePageListRepository) : ViewModel() {
+ class PopularViewModel(private  val moviePageListRepository: MoviePageListRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     val moviePagedList: LiveData<PagedList<Movie>> by lazy {

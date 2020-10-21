@@ -25,13 +25,6 @@ lateinit var pagedListRepository: MoviePageListRepository
             savedInstanceState: Bundle?
     ): View? {
         binding=  FragmentPopularBinding.inflate( inflater,container, false)
-
-    return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        popularViewModel =ViewModelProvider(this).get(PopularViewModel::class.java)
         val apiService:TMDBInterface=TMDBClient.getClient()
         pagedListRepository= MoviePageListRepository(apiService)
         popularViewModel=getViewModel()
@@ -59,7 +52,9 @@ lateinit var pagedListRepository: MoviePageListRepository
                 adapter.setNetworkState(it)
             }
         })
+    return binding.root
     }
+
 
     private fun getViewModel():PopularViewModel{
         return ViewModelProvider(this,object :ViewModelProvider.Factory{

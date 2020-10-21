@@ -29,9 +29,10 @@
             <com.google.android.material.textview.MaterialTextView
 
                 android:id="@+id/list_item_title_TV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:maxLines="2"
                 android:gravity="center"
                 android:paddingStart="@dimen/md_keylinesV"
                 android:paddingTop="@dimen/md_keylinesV"
@@ -43,18 +44,18 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:id="@+id/list_item_releaseDate_TV"
                 android:paddingStart="@dimen/md_keylinesV"
                 android:paddingEnd="@dimen/md_keylinesV"
                 android:singleLine="true"
                 android:textColor="@color/second"
-                android:textSize="@dimen/thirdFont" />
+                android:textSize="@dimen/secondFont" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="bottom|end"
                 >
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -64,7 +65,7 @@
                     android:padding="@dimen/md_keylinesV"
                     android:text="@string/vote_average"
                     android:textColor="@color/colorAccent"
-                    android:textAppearance="@style/TextStyle"
+                    android:textAppearance="@style/TextStyle_listItem"
                     android:textStyle="bold"
                     android:layout_margin="1dp"
                     android:layout_gravity="center_vertical"
@@ -74,10 +75,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srb_isIndicator="true"
-                    app:srb_starHeight="15dp"
-                    app:srb_starWidth="15dp"
+                    app:srb_starHeight="10dp"
+                    app:srb_starWidth="10dp"
                     app:srb_starPadding="1dp"
-                    android:padding="5dp"
+                    android:padding="2dp"
+                    android:gravity="center_vertical"
                     app:srb_numStars="5"
                     app:srb_stepSize=".1"
                     app:srb_scrollable="false"

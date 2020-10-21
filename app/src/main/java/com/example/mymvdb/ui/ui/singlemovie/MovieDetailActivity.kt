@@ -31,6 +31,7 @@ class MovieDetailActivity : AppCompatActivity() {
         binding= ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.e( "ErrorHH",binding.root.toString())
+
         setSupportActionBar(binding.toolbar)
        //binding.root.findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
 
