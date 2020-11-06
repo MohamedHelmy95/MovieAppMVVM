@@ -3,6 +3,7 @@
     <string name="title_topRated">Top Rated</string>
     <string name="title_popular">Popular</string>
     <string name="title_upComing">Upcoming</string>
+    <string name="title_favorites">Favorites</string>
     <string name="title_activity_movie_detail">ScrollingActivity</string>
     <string name="genres">Genres</string>
     <string name="original_language">Original Language</string>

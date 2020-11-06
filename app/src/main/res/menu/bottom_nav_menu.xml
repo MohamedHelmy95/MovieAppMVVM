@@ -15,5 +15,10 @@
         android:id="@+id/nav_upcoming"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_upComing" />
+   <item
+    android:id="@+id/nav_favorites"
+    android:icon="@drawable/ic_baseline_favorite_24"
+    android:title="@string/title_favorites" />
+
 
 </menu>

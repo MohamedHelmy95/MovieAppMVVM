@@ -52,7 +52,7 @@
         app:layout_anchor="@id/app_bar"
         android:contentDescription="@string/movie_poster"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/favorite_fab_image_selector" />
+        android:src="@drawable/ic_baseline_favorite_border_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

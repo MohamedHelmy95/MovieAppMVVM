@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymvdb.api.TMDBClient
 import com.example.mymvdb.api.TMDBInterface
 import com.example.mymvdb.databinding.FragmentPopularBinding
+import com.example.mymvdb.rerposit.popular.MoviePageListRepository
 import com.example.mymvdb.utility.NetworkState
 
 class PopularFragment : Fragment() {
@@ -28,13 +29,13 @@ lateinit var pagedListRepository: MoviePageListRepository
         val apiService:TMDBInterface=TMDBClient.getClient()
         pagedListRepository= MoviePageListRepository(apiService)
         popularViewModel=getViewModel()
-        val gridLayoutManager=GridLayoutManager(this.context,3)
+        val gridLayoutManager=GridLayoutManager(this.context,2)
         val adapter=PopularPagedListAdapter(this.context)
         gridLayoutManager.spanSizeLookup= object :GridLayoutManager.SpanSizeLookup(){
             override fun getSpanSize(position: Int): Int {
                 val viewType:Int=adapter.getItemViewType(position)
                 if(viewType==adapter.MOVIE_VIEW_TYPE)  return 1
-                else return 3
+                else return 2
             }
         }
         binding.popularMoviesRv.apply {

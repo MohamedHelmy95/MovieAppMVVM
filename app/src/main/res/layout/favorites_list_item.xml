@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:id="@+id/list_item_poster_IV"
+                android:scaleType="centerCrop"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+
+                android:id="@+id/fav_list_item_title_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:gravity="center"
+                android:paddingStart="@dimen/md_keylinesV"
+                android:paddingTop="@dimen/md_keylinesV"
+                android:paddingEnd="@dimen/md_keylinesV"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/secondFont" />
+
+            <com.google.android.material.textview.MaterialTextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:id="@+id/fav_list_item_releaseDate_TV"
+                android:paddingStart="@dimen/md_keylinesV"
+                android:paddingEnd="@dimen/md_keylinesV"
+                android:singleLine="true"
+                android:textColor="@color/second"
+                android:textSize="@dimen/secondFont" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fav_list_item_voteAverageValueTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/md_keylinesV"
+                    android:text="@string/vote_average"
+                    android:textColor="@color/colorAccent"
+                    android:textAppearance="@style/TextStyle_listItem"
+                    android:textStyle="bold"
+                    android:layout_margin="1dp"
+                    android:layout_gravity="center_vertical"
+                    />
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/fav_list_item_rBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srb_isIndicator="true"
+                    app:srb_starHeight="10dp"
+                    app:srb_starWidth="10dp"
+                    app:srb_starPadding="1dp"
+                    android:padding="2dp"
+                    android:gravity="center_vertical"
+                    app:srb_numStars="5"
+                    app:srb_stepSize=".1"
+                    app:srb_scrollable="false"
+                    app:srb_clearRatingEnabled="true"
+                    app:srb_drawableEmpty="@drawable/empty"
+                    app:srb_drawableFilled="@drawable/filled"
+                    android:layout_gravity="center_vertical"
+                    />
+
+
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:src="@drawable/ic_baseline_close_24"
+                android:id="@+id/fav_list_item_remove"
+                android:padding="2dp"
+                android:background="@android:color/transparent"
+                />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fav_list_item_adult_IV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/md_keylinesV"
+            app:srcCompat="@drawable/ic_18" />
+    </androidx.cardview.widget.CardView>
+</layout>

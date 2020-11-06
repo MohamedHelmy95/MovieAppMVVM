@@ -7,33 +7,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.ui.toprated.TopRatedFragment">
+        tools:context=".ui.ui.favorites.FavoritesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:padding="@dimen/cardview_compat_inset_shadow"
-            android:id="@+id/topRated_movies_Rv"
+            android:id="@+id/favorites_movies_Rv"
 
             />
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:id="@+id/progress_bar_top"
-            />
-        <TextView
-            android:id="@+id/text_error_top"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/no_network_cV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
             android:visibility="gone"
-            />
+            >
+            <TextView
+                android:id="@+id/text_error_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:visibility="gone"
+                />
+        </androidx.cardview.widget.CardView>
     </FrameLayout>
 </layout>

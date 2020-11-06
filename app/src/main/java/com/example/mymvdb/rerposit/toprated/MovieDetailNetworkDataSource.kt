@@ -1,10 +1,11 @@
-package com.example.mymvdb.utility
+package com.example.mymvdb.rerposit.toprated
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mymvdb.api.TMDBInterface
-import com.example.mymvdb.movieDetail.MovieDetails
+import com.example.mymvdb.movieDetail.Movie
+import com.example.mymvdb.utility.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
@@ -12,8 +13,8 @@ class MovieDetailNetworkDataSource(private val apiService:TMDBInterface,private 
     private val _networkstate=MutableLiveData <NetworkState>()
 val networkState : LiveData<NetworkState>
     get()=_networkstate
-    private val _movieDetailsResponse= MutableLiveData<MovieDetails>()
-    val movieDetailResponse:LiveData<MovieDetails>
+    private val _movieDetailsResponse= MutableLiveData<Movie>()
+    val movieDetailResponse:LiveData<Movie>
     get()=_movieDetailsResponse
     fun fetchMovieDetails(movieId:Int){
         _networkstate.postValue(NetworkState.LOADING)

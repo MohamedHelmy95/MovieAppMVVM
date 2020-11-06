@@ -15,7 +15,8 @@
         <activity
             android:name=".ui.ui.singlemovie.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:theme="@style/Theme.MyMVDB.NoActionBar" />
+            android:theme="@style/Theme.MyMVDB.NoActionBar"
+            android:parentActivityName=".ui.ui.MainActivity"/>
         <activity
             android:name=".ui.ui.MainActivity"
             android:label="@string/app_name">

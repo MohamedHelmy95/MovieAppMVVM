@@ -1,4 +1,4 @@
-package com.example.mymvdb.ui.ui.popular
+package com.example.mymvdb.rerposit.toprated
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -7,8 +7,6 @@ import androidx.paging.PagedList
 import com.example.mymvdb.api.POST_PER_PAGE
 import com.example.mymvdb.api.TMDBInterface
 import com.example.mymvdb.movieDetail.Movie
-import com.example.mymvdb.rerposit.MovieDataSource
-import com.example.mymvdb.rerposit.MovieDataSourceFactory
 import com.example.mymvdb.utility.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
@@ -26,7 +24,7 @@ moviePagedList=LivePagedListBuilder(movieDataSourceFactory,config).build()
 
 fun getNetworkState():LiveData<NetworkState>{
     return Transformations.switchMap<MovieDataSource,NetworkState>(
-        movieDataSourceFactory.movieLiveDataSource,MovieDataSource::networkState)
+        movieDataSourceFactory.movieLiveDataSource, MovieDataSource::networkState)
 
 }
 }

@@ -1,4 +1,4 @@
-package com.example.mymvdb.ui.ui.popular
+package com.example.mymvdb.ui.ui.toprated
 
 import android.content.Context
 import android.content.Intent
@@ -17,7 +17,7 @@ import com.example.mymvdb.utility.NetworkState
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.network_state_item.view.*
 
-class PopularPagedListAdapter(public val context: Context?) :PagedListAdapter<Movie,RecyclerView.ViewHolder>(MovieDiffCallback()) {
+class TopRatedPagedListAdapter(public val context: Context?) :PagedListAdapter<Movie,RecyclerView.ViewHolder>(MovieDiffCallback()) {
   val MOVIE_VIEW_TYPE=1
     val NETWORK_VIEW_TYPE=2
     private var networkState:NetworkState?=null

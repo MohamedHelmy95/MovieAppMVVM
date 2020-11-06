@@ -33,5 +33,5 @@
 
     <style name="Theme.MyMVDB.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TextView">1</style>
+
 </resources>

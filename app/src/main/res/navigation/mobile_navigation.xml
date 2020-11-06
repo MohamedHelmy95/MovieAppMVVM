@@ -26,4 +26,10 @@
         android:name="com.example.mymvdb.ui.ui.upcoming.UpComingFragment"
         android:label="@string/title_upComing"
         tools:layout="@layout/fragment_upcoming" />
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.mymvdb.ui.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_upcoming" />
+
 </navigation>

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.example.mymvdb.movieDetail.Movie
+import com.example.mymvdb.rerposit.popular.MoviePageListRepository
 import com.example.mymvdb.utility.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 
