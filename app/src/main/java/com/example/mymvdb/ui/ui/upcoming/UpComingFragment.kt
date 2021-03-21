@@ -26,7 +26,7 @@ class UpComingFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding=  FragmentUpcomingBinding.inflate( inflater,container, false)
         val apiService: TMDBInterface = TMDBClient.getClient()
         pagedListRepository= MoviePageListRepository(apiService)
